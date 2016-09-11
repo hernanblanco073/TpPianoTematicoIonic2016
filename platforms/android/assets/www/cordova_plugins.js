@@ -32,6 +32,22 @@ module.exports = [
             "cordova.plugins.Keyboard"
         ],
         "runs": true
+    },
+    {
+        "id": "cordova-plugin-3dtouch.ThreeDeeTouch",
+        "file": "plugins/cordova-plugin-3dtouch/www/ThreeDeeTouch.js",
+        "pluginId": "cordova-plugin-3dtouch",
+        "clobbers": [
+            "ThreeDeeTouch"
+        ]
+    },
+    {
+        "id": "cordova-plugin-nativeaudio.nativeaudio",
+        "file": "plugins/cordova-plugin-nativeaudio/www/nativeaudio.js",
+        "pluginId": "cordova-plugin-nativeaudio",
+        "clobbers": [
+            "window.plugins.NativeAudio"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -42,7 +58,9 @@ module.exports.metadata =
     "cordova-plugin-splashscreen": "3.2.2",
     "cordova-plugin-statusbar": "2.1.3",
     "cordova-plugin-whitelist": "1.2.2",
-    "ionic-plugin-keyboard": "2.2.1"
+    "ionic-plugin-keyboard": "2.2.1",
+    "cordova-plugin-3dtouch": "1.3.5",
+    "cordova-plugin-nativeaudio": "3.0.6"
 };
 // BOTTOM OF METADATA
 });

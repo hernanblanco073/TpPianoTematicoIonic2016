@@ -24,6 +24,12 @@
         },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.pruebavibrar123198"
+        },
+        "cordova-plugin-3dtouch": {
+            "PACKAGE_NAME": "com.ionicframework.pruebavibrar123198"
+        },
+        "cordova-plugin-nativeaudio": {
+            "PACKAGE_NAME": "com.ionicframework.pruebavibrar123198"
         }
     },
     "dependent_plugins": {}
