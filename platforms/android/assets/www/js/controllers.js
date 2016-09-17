@@ -1,92 +1,164 @@
 angular.module('starter.controllers', ['ngCordova'])
 
-.controller('DashCtrl', function($scope) {})
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+.controller('controlBotones', function($scope, $cordovaNativeAudio, $ionicPlatform, $stateParams,$state) {
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
+  $scope.Nombre = $stateParams.nombre;
+
+  $ionicPlatform.ready(function() {
+
+  $cordovaNativeAudio
+          .preloadSimple('BarrelRoll', 'sounds/BarrelRoll.mp3')
+          .then(function (msg) 
+              {
+                console.log(msg);
+              }, function (error) 
+                {
+                  alert(error);
+                }
+                );
+  $cordovaNativeAudio
+          .preloadSimple('Coin', 'sounds/Coin.mp3')
+          .then(function (msg) 
+              {
+                console.log(msg);
+              }, function (error) 
+                {
+                  alert(error);
+                }
+                );
+  $cordovaNativeAudio
+          .preloadSimple('FinishHim', 'sounds/FinishHim.mp3')
+          .then(function (msg) 
+              {
+                console.log(msg);
+              }, function (error) 
+                {
+                  alert(error);
+                }
+                );
+  $cordovaNativeAudio
+          .preloadSimple('GetOverHere', 'sounds/GetOverHere.mp3')
+          .then(function (msg) 
+              {
+                console.log(msg);
+              }, function (error) 
+                {
+                  alert(error);
+                }
+                );
+  $cordovaNativeAudio
+          .preloadSimple('Hadouken', 'sounds/Hadouken.mp3')
+          .then(function (msg) 
+              {
+                console.log(msg);
+              }, function (error) 
+                {
+                  alert(error);
+                }
+                );
+  $cordovaNativeAudio
+          .preloadSimple('MGAlert', 'sounds/MGAlert.mp3')
+          .then(function (msg) 
+              {
+                console.log(msg);
+              }, function (error) 
+                {
+                  alert(error);
+                }
+                );
+
+
+  $scope.BarrelRoll = function(){
+          try
+          {
+            $cordovaNativeAudio.play('BarrelRoll');
+          }
+          catch(error)
+          {
+            alert(error);
+          }   
+          //hacer la logica para guardar el Json, con un boton guardar que sobreescriba al anterior
+    };
+    $scope.FinishHim = function(){
+          try
+          {
+            $cordovaNativeAudio.play('FinishHim');
+          }
+          catch(error)
+          {
+            alert(error);
+          }   
+    };
+    $scope.Hadouken = function(){
+          try
+          {
+            $cordovaNativeAudio.play('Hadouken');
+          }
+          catch(error)
+          {
+            alert(error);
+          }   
+    };
+    $scope.MGAlert = function(){
+          try
+          {
+            $cordovaNativeAudio.play('MGAlert');
+          }
+          catch(error)
+          {
+            alert(error);
+          }   
+    };
+    $scope.GOHere = function(){
+          try
+          {
+            $cordovaNativeAudio.play('GetOverHere');
+          }
+          catch(error)
+          {
+            alert(error);
+          }
+    };
+    $scope.Coin = function(){
+          try
+          {
+            $cordovaNativeAudio.play('Coin');
+          }
+          catch(error)
+          {
+            alert(error);
+          }
+    };
+
+
+
+    });
+
+
+  })
+
+.controller('controlLogin', function($scope, $state) {
+
+  $scope.Logear = function(){
+    {
+      var Nombre = document.getElementById("txtNombre").value;
+
+      //console.log(Nombre);
+      //if($scope.Nombre !== "")
+      //{
+      $state.go('tab.botonera', {nombre: Nombre});
+      //}
+      //else
+      //{
+      //  alert("no");
+      //  $state.go('tab.botonera');
+      //}
+    }
   };
-})
+  
+ })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
-
-.controller('AccountCtrl', function($scope, $cordovaVibration, $cordovaNativeAudio) {
-  /*$scope.settings = {
-    enableFriends: true
-  };*/
-
-  $scope.Vibrar = function(){
-           try
-           {
-             $cordovaVibration.vibrate([3000,1000,5000]);
-           }
-           catch(error)
-           {
-             alert("Estoy Vibrando");
-           }
-  }
-
-  $scope.NoVibrar = function(){
-           try
-           {
-             $cordovaVibration.vibrate(0);
-           }
-           catch(error)
-           {
-             alert("NO Estoy Vibrando");
-           }
-  }
-
-  $scope.Sonido1 = function(){
-    $cordovaNativeAudio
-    .preloadSimple('Sonido1', 'sounds/sonido1.mp3')
-    .then(function (msg) {
-      console.log(msg);
-    }, function (error) {
-      alert(error);
-    });
-
-    try
-    {
-      $cordovaNativeAudio.play('Sonido1');
-    }
-    catch(error)
-    {
-      alert("Estoy sonando");
-    }
-  }
-
-    $scope.Sonido2 = function(){
-    $cordovaNativeAudio
-    .preloadSimple('Sonido2', 'sounds/sonido2.mp3')
-    .then(function (msg) {
-      console.log(msg);
-    }, function (error) {
-      alert(error);
-    });
-
-    try
-    {
-      $cordovaNativeAudio.play('Sonido2');
-    }
-    catch(error)
-    {
-      alert("Estoy sonando");
-    }
-  }
+.controller('controlAbout', function($scope) {
+  
 });
-
-
-//tp botonera con sondiso y botones con estilos, que guarde en un archivo en el celular que boton toco
-//sobre las preguntas, cada vez que toque la respuesta correcta vibra una vez y da un sonido de bien, para mal vibra 2 veces y da otro sonido

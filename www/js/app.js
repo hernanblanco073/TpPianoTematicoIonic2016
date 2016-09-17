@@ -52,6 +52,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   .state('tab.botonera', {
       url: '/botonera',
+      params: {nombre: null},
       views: {
         'tab-botonera': {
           templateUrl: 'templates/tab-botones.html',

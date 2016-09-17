@@ -8676,8 +8676,7 @@ progress {
         box-shadow: none;
         color: #fff; }
   .button.button-positive {
-    border-radius: 12px;
-    border-color: black;
+    border-color: transparent;
     background-color: #387ef5;
     color: #fff; }
     .button.button-positive:hover {
@@ -8703,8 +8702,7 @@ progress {
         box-shadow: none;
         color: #fff; }
   .button.button-calm {
-    border-radius: 12px;
-    border-color: black;
+    border-color: transparent;
     background-color: #11c1f3;
     color: #fff; }
     .button.button-calm:hover {
@@ -8730,9 +8728,8 @@ progress {
         box-shadow: none;
         color: #fff; }
   .button.button-assertive {
-    border-radius: 12px;
-    border-color: black;
-    background-color: white;
+    border-color: transparent;
+    background-color: #ef473a;
     color: #fff; }
     .button.button-assertive:hover {
       color: #fff;
@@ -8757,8 +8754,7 @@ progress {
         box-shadow: none;
         color: #fff; }
   .button.button-balanced {
-    border-radius: 12px;
-    border-color: black;
+    border-color: transparent;
     background-color: #33cd5f;
     color: #fff; }
     .button.button-balanced:hover {
@@ -8784,9 +8780,8 @@ progress {
         box-shadow: none;
         color: #fff; }
   .button.button-energized {
-    border-radius: 12px;
-    border-color: black;
-    background-color: #253685;
+    border-color: transparent;
+    background-color: #ffc900;
     color: #fff; }
     .button.button-energized:hover {
       color: #fff;
@@ -8811,9 +8806,8 @@ progress {
         box-shadow: none;
         color: #fff; }
   .button.button-royal {
-    border-radius: 12px;
-    border-color: black;
-    background-color: #ffb90f;
+    border-color: transparent;
+    background-color: #886aea;
     color: #fff; }
     .button.button-royal:hover {
       color: #fff;
