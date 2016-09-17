@@ -8676,7 +8676,7 @@ progress {
         box-shadow: none;
         color: #fff; }
   .button.button-positive {
-    border-color: transparent;
+    border-color: black;
     background-color: #387ef5;
     color: #fff; }
     .button.button-positive:hover {
@@ -8702,8 +8702,8 @@ progress {
         box-shadow: none;
         color: #fff; }
   .button.button-calm {
-    border-color: transparent;
-    background-color: #11c1f3;
+    border-color:red;
+    background-color: black;
     color: #fff; }
     .button.button-calm:hover {
       color: #fff;
@@ -8728,8 +8728,8 @@ progress {
         box-shadow: none;
         color: #fff; }
   .button.button-assertive {
-    border-color: transparent;
-    background-color: #ef473a;
+    border-color: black;
+    background-color: white;
     color: #fff; }
     .button.button-assertive:hover {
       color: #fff;
@@ -8754,8 +8754,8 @@ progress {
         box-shadow: none;
         color: #fff; }
   .button.button-balanced {
-    border-color: transparent;
-    background-color: #33cd5f;
+    border-color: black;
+    background-color: green;
     color: #fff; }
     .button.button-balanced:hover {
       color: #fff;
@@ -8780,8 +8780,8 @@ progress {
         box-shadow: none;
         color: #fff; }
   .button.button-energized {
-    border-color: transparent;
-    background-color: #ffc900;
+    border-color: red;
+    background-color: blue;
     color: #fff; }
     .button.button-energized:hover {
       color: #fff;
@@ -8806,9 +8806,9 @@ progress {
         box-shadow: none;
         color: #fff; }
   .button.button-royal {
-    border-color: transparent;
-    background-color: #886aea;
-    color: #fff; }
+    border-color: black;
+    background-color: black;
+    color: yellow; }
     .button.button-royal:hover {
       color: #fff;
       text-decoration: none; }

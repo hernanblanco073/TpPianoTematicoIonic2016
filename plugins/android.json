@@ -30,6 +30,9 @@
         },
         "cordova-plugin-nativeaudio": {
             "PACKAGE_NAME": "com.ionicframework.pruebavibrar123198"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "com.ionicframework.starter"
         }
     },
     "dependent_plugins": {}

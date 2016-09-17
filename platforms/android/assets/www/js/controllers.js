@@ -1,9 +1,9 @@
 angular.module('starter.controllers', ['ngCordova'])
 
 
-.controller('controlBotones', function($scope, $cordovaNativeAudio, $ionicPlatform, $stateParams,$state) {
+.controller('controlBotones', function($scope, $cordovaNativeAudio, $ionicPlatform, $stateParams, $cordovaVibration) {
 
-  $scope.Nombre = $stateParams.nombre;
+  $scope.Mensaje = "Bienvenido ".concat($stateParams.nombre);
 
   $ionicPlatform.ready(function() {
 
@@ -73,6 +73,7 @@ angular.module('starter.controllers', ['ngCordova'])
           try
           {
             $cordovaNativeAudio.play('BarrelRoll');
+            $cordovaVibration.vibrate(1000);
           }
           catch(error)
           {
@@ -84,6 +85,7 @@ angular.module('starter.controllers', ['ngCordova'])
           try
           {
             $cordovaNativeAudio.play('FinishHim');
+            $cordovaVibration.vibrate(1000);
           }
           catch(error)
           {
@@ -94,6 +96,7 @@ angular.module('starter.controllers', ['ngCordova'])
           try
           {
             $cordovaNativeAudio.play('Hadouken');
+            $cordovaVibration.vibrate(1000);
           }
           catch(error)
           {
@@ -104,6 +107,7 @@ angular.module('starter.controllers', ['ngCordova'])
           try
           {
             $cordovaNativeAudio.play('MGAlert');
+            $cordovaVibration.vibrate(1000);
           }
           catch(error)
           {
@@ -114,6 +118,7 @@ angular.module('starter.controllers', ['ngCordova'])
           try
           {
             $cordovaNativeAudio.play('GetOverHere');
+            $cordovaVibration.vibrate(1000);
           }
           catch(error)
           {
@@ -124,6 +129,7 @@ angular.module('starter.controllers', ['ngCordova'])
           try
           {
             $cordovaNativeAudio.play('Coin');
+            $cordovaVibration.vibrate(1000);
           }
           catch(error)
           {
