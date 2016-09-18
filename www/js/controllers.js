@@ -1,11 +1,12 @@
 angular.module('starter.controllers', ['ngCordova'])
 
 
-.controller('controlBotones', function($scope, $cordovaNativeAudio, $ionicPlatform, $stateParams, $cordovaVibration) {
+.controller('controlBotones', function($scope, $cordovaNativeAudio, $ionicPlatform, $stateParams, $cordovaVibration, $cordovaFile) {
 
   $scope.Mensaje = "Bienvenido ".concat($stateParams.nombre);
+  $scope.Secuencia = [];
 
-  $ionicPlatform.ready(function() {
+  /*$ionicPlatform.ready(function() {
 
   $cordovaNativeAudio
           .preloadSimple('BarrelRoll', 'sounds/BarrelRoll.mp3')
@@ -66,7 +67,7 @@ angular.module('starter.controllers', ['ngCordova'])
                 {
                   alert(error);
                 }
-                );
+                );*/
 
 
   $scope.BarrelRoll = function(){
@@ -74,11 +75,13 @@ angular.module('starter.controllers', ['ngCordova'])
           {
             $cordovaNativeAudio.play('BarrelRoll');
             $cordovaVibration.vibrate(1000);
+            $scope.Secuencia.push("Barrel Roll");
           }
           catch(error)
           {
-            alert(error);
-          }   
+            //alert(error);
+            $scope.Secuencia.push("Barrel Roll");
+          }
           //hacer la logica para guardar el Json, con un boton guardar que sobreescriba al anterior
     };
     $scope.FinishHim = function(){
@@ -86,10 +89,12 @@ angular.module('starter.controllers', ['ngCordova'])
           {
             $cordovaNativeAudio.play('FinishHim');
             $cordovaVibration.vibrate(1000);
+            Secuencia = array.push("Finish Him");
           }
           catch(error)
           {
-            alert(error);
+            //alert(error);
+            $scope.Secuencia.push("FinishHim");
           }   
     };
     $scope.Hadouken = function(){
@@ -97,10 +102,12 @@ angular.module('starter.controllers', ['ngCordova'])
           {
             $cordovaNativeAudio.play('Hadouken');
             $cordovaVibration.vibrate(1000);
+            Secuencia = array.push("Hadouken");
           }
           catch(error)
           {
-            alert(error);
+            $scope.Secuencia.push("Hadouken");
+            //alert(error);
           }   
     };
     $scope.MGAlert = function(){
@@ -108,10 +115,12 @@ angular.module('starter.controllers', ['ngCordova'])
           {
             $cordovaNativeAudio.play('MGAlert');
             $cordovaVibration.vibrate(1000);
+            Secuencia = array.push("MGS Alert");
           }
           catch(error)
           {
-            alert(error);
+            $scope.Secuencia.push("MGAlert");
+            //alert(error);
           }   
     };
     $scope.GOHere = function(){
@@ -119,10 +128,12 @@ angular.module('starter.controllers', ['ngCordova'])
           {
             $cordovaNativeAudio.play('GetOverHere');
             $cordovaVibration.vibrate(1000);
+            Secuencia = array.push("Get Over Here");
           }
           catch(error)
           {
-            alert(error);
+            $scope.Secuencia.push("GOHere");
+            //alert(error);
           }
     };
     $scope.Coin = function(){
@@ -130,16 +141,47 @@ angular.module('starter.controllers', ['ngCordova'])
           {
             $cordovaNativeAudio.play('Coin');
             $cordovaVibration.vibrate(1000);
+            Secuencia = array.push("Coin");
           }
           catch(error)
           {
-            alert(error);
+            $scope.Secuencia.push("Coin");
+            //alert(error);
           }
     };
 
 
 
-    });
+    $scope.Guardar = function(){
+        
+    var jsonaux = "{";
+    var count = 0;
+
+        for (val of $scope.Secuencia) {
+            count++;
+            console.log(val);
+           jsonaux = jsonaux.concat(',',count,': "',val,'"');
+          }
+
+      jsonaux = jsonaux.concat('}');
+
+      
+    $cordovaFile.checkDir("files", "piano")
+      .then(function (success) {
+
+        $cordovaFile.writeFile("/piano", "secuencias.json", jsonaux, true);
+
+      }, function (error) {
+        console.log(error);
+        $cordovaFile.createDir("/", "piano", true);
+        $cordovaFile.writeFile("/piano", "secuencias.json", jsonaux, true);
+        
+      });
+    };
+
+
+
+    //});
 
 
   })
