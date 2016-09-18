@@ -69,6 +69,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         controller: 'controlAbout'
       }
     }
+  })
+
+  .state('tab.secuencia', {
+    url: '/secuencia',
+    params: {secuencia: null},
+    views: {
+      'tab-secuencia': {
+        templateUrl: 'templates/tab-secuencia.html',
+        controller: 'controlSecuencia'
+      }
+    }
   });
 
   // if none of the above states are matched, use this as the fallback
