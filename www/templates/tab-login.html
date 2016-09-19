@@ -8,7 +8,7 @@
         <input type="text" placeholder="Nombre" name="txtNombre" id="txtNombre">
       </label>
       </br>
-    <button class="button button-block button-positive" ng-click="Logear()">
+    <button class="button button-block button-positive" ng-click="Logear()" ng-disable = "Nombre == null || Nombre.trim == ''">
       Logear
     </button>
     </div>
