@@ -42,6 +42,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
   .state('tab.login', {
     url: '/login',
+    cache: false,
     views: {
       'tab-login': {
         templateUrl: 'templates/tab-login.html',
@@ -52,6 +53,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
   .state('tab.botonera', {
       url: '/botonera',
+      cache: false,
       params: {nombre: ''},
       views: {
         'tab-botonera': {
@@ -63,6 +65,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
   .state('tab.about', {
     url: '/about',
+    cache: false,
     views: {
       'tab-about': {
         templateUrl: 'templates/tab-about.html',
@@ -73,7 +76,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
   .state('tab.secuencia', {
     url: '/secuencia',
-    params: {secuencia: null},
+    cache: false,
     views: {
       'tab-secuencia': {
         templateUrl: 'templates/tab-secuencia.html',

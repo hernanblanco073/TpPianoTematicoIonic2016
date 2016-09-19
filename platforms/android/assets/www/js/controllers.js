@@ -1,11 +1,18 @@
 angular.module('starter.controllers', ['ngCordova'])
 
 
-.controller('controlBotones', function($scope, $cordovaNativeAudio, $ionicPlatform, $stateParams, $cordovaVibration, $cordovaFile, $state) {
+.controller('controlBotones', function($scope, $cordovaNativeAudio, $ionicPlatform, $ionicPopup, $stateParams, $cordovaVibration, $cordovaFile, $state) {
 
   $scope.Mensaje = "Bienvenido ".concat($stateParams.nombre);
   $scope.Secuencia = [];
   $scope.listado;
+
+  $scope.Alertguardar = function() {
+   var alertPopup = $ionicPopup.alert({
+     title: 'Secuencia',
+     template: "Su secuencia fue guardada"
+   });
+  }
 
   $ionicPlatform.ready(function() {
 
@@ -16,7 +23,7 @@ angular.module('starter.controllers', ['ngCordova'])
                 console.log(msg);
               }, function (error) 
                 {
-                  alert(error);
+                  
                 }
                 );
   $cordovaNativeAudio
@@ -26,7 +33,7 @@ angular.module('starter.controllers', ['ngCordova'])
                 console.log(msg);
               }, function (error) 
                 {
-                  alert(error);
+                  
                 }
                 );
   $cordovaNativeAudio
@@ -36,7 +43,7 @@ angular.module('starter.controllers', ['ngCordova'])
                 console.log(msg);
               }, function (error) 
                 {
-                  alert(error);
+                  
                 }
                 );
   $cordovaNativeAudio
@@ -46,7 +53,7 @@ angular.module('starter.controllers', ['ngCordova'])
                 console.log(msg);
               }, function (error) 
                 {
-                  alert(error);
+                  
                 }
                 );
   $cordovaNativeAudio
@@ -56,7 +63,7 @@ angular.module('starter.controllers', ['ngCordova'])
                 console.log(msg);
               }, function (error) 
                 {
-                  alert(error);
+
                 }
                 );
   $cordovaNativeAudio
@@ -66,7 +73,7 @@ angular.module('starter.controllers', ['ngCordova'])
                 console.log(msg);
               }, function (error) 
                 {
-                  alert(error);
+             
                 }
                 );
 
@@ -156,11 +163,8 @@ angular.module('starter.controllers', ['ngCordova'])
     $scope.Guardar = function(){
         
     var jsonaux = "[";
-    var count = 0;
 
         for (val of $scope.Secuencia) {
-            count++;
-            console.log(val);
            jsonaux = jsonaux.concat(',{"name" : "',val,'"}');
           }
 
@@ -171,43 +175,33 @@ angular.module('starter.controllers', ['ngCordova'])
       
     $cordovaFile.checkDir(cordova.file.externalApplicationStorageDirectory, "piano")
       .then(function (success) {
-        //alert("success");
-        try
-        {
           $cordovaFile.writeFile(cordova.file.externalApplicationStorageDirectory, "piano/secuencias.txt", jsonaux, true)
                .then(function (success) {
-                      //alert("escribe file");
-                      $cordovaFile.readAsText(cordova.file.externalApplicationStorageDirectory, "piano/secuencias.txt")
-                        .then(function (success) {
 
-                            try
-                            {
-                              $scope.listado = JSON.parse(success);
-                            }
-                            catch(error)
-                            {
-                              alert(error);
-                            }
-
-                            }, function (error) {
-                                alert("no leyo", error);
-                              });
-           
+                        $scope.Alertguardar();
                  }, function (error) {
-                        alert(error);
+                        alert("error escribir");
+                        alert(error.toString());
                   });
-        }
-        catch(error)
-        {
-          alert(error);
-        }
 
       }, function (error) {
-        alert(error);
+        $cordovaFile.createDir(cordova.file.externalApplicationStorageDirectory, "piano", false)
+            .then(function (success) {
+              $cordovaFile.writeFile(cordova.file.externalApplicationStorageDirectory, "piano/secuencias.txt", jsonaux, true)
+               .then(function (success) {
+                          $scope.Alertguardar();
+                 }, function (error) {
+                        alert("fallo escribir crear dir");
+                        alert(error.toString());
+                  });
+        
+              }, function (error) {
+                  alert("fallo crear dir");
+              });
       }
       );
 
-    $state.go('tab.secuencia', {secuencia: $scope.listado});
+    //$state.go('tab.secuencia');
 
     };//cierre guardar
 
@@ -235,8 +229,24 @@ angular.module('starter.controllers', ['ngCordova'])
 })
 
 
-.controller('controlSecuencia', function($scope, $stateParams) {
+.controller('controlSecuencia', function($scope, $stateParams, $cordovaFile) {
 
-  $scope.Lista = $stateParams.secuencia;
+
+  $cordovaFile.readAsText(cordova.file.externalApplicationStorageDirectory, "piano/secuencias.txt")
+                        .then(function (success) {
+
+                            try
+                            {
+                              $scope.Lista = JSON.parse(success);
+                            }
+                            catch(error)
+                            {
+                              alert(error.toString());
+                            }
+
+                            }, function (error) {
+                                alert(error.toString());
+                              });
+
 });
 
