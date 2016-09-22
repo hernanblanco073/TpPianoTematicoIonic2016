@@ -3,7 +3,8 @@ angular.module('starter.controllers', ['ngCordova'])
 
 .controller('controlBotones', function($scope, $cordovaNativeAudio, $ionicPlatform, $ionicPopup, $stateParams, $cordovaVibration, $cordovaFile, $state) {
 
-  $scope.Mensaje = "Bienvenido ".concat($stateParams.nombre);
+  $scope.Nombre = $stateParams.nombre;
+  $scope.Mensaje = "Hola ".concat($scope.Nombre, ", pulse los botones para escuchar los sonidos");
   $scope.Secuencia = [];
   $scope.listado;
 
@@ -212,20 +213,37 @@ angular.module('starter.controllers', ['ngCordova'])
 
   })
 
-.controller('controlLogin', function($scope, $state) {
+.controller('controlLogin', function($scope, $state, $ionicPopup) {
 
-  $scope.Logear = function(){
+  $scope.Nombre;
+
+
+  $scope.Logear = function(Nombre){
     {
-      var Nombre = document.getElementById("txtNombre").value;
-
-      $state.go('tab.botonera', {nombre: Nombre});
+      if(Nombre == "" || Nombre == null)
+      {
+        $ionicPopup.alert({
+          title: 'Error',
+          template: "Debe ingresar su nombre"
+          });
+      }
+      else
+      {
+        $ionicPopup.alert({
+          title: 'Bienvenido',
+          template: "Bienvenido ".concat(Nombre)
+          });
+        $state.go('tab.botonera',{nombre: Nombre});
+      }
+      
     }
   };
   
  })
 
-.controller('controlAbout', function($scope) {
-  
+
+.controller('controlAbout', function($scope, $state) {
+
 })
 
 

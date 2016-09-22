@@ -1,12 +1,14 @@
 <ion-view view-title="Botonera">
   <ion-content>
 
+  <div class="row" ng-show="Nombre == null">
+      <span style="color:Black;font-weight:bold;font-size: 18pt" >Por favor, logee ingresando su nombre para poder jugar </span>
+  </div>
 
+
+<div  ng-show="Nombre != null">
 
     <h4>{{Mensaje}}</h4></br>
-    <h5>Elija los sonidos que quiere escuchar apretando los botones</h5>
-
-
 
    <div class="row">
   <button class="button button-block button-positive" ng-click="BarrelRoll()">
@@ -35,11 +37,12 @@
   </div>
 
 
-  
 
   <button class="button button-positive" ng-click="Guardar()">
       Guardar la secuencia que fue tocada
   </button>
+  
+</div>
 
 
 </ion-view>
